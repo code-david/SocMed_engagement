@@ -6,4 +6,6 @@ COPY . .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "analytics.py"]
+EXPOSE 8501
+
+CMD ["streamlit", "run", "analytics.py", "--server.address=127.0.0.1"]
