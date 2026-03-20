@@ -1,3 +1,13 @@
+"""
+DOMINGO, DAVID ARNOLD R.
+BS CPE-4A
+Containerizing a Python Data Analytics Application
+
+This script performs data analysis and visualization on a social media engagement dataset.
+The generated graphs are saved in the 'graphs' folder and displayed using Streamlit for an
+interactive experience.
+"""
+
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
