@@ -11,6 +11,33 @@ sns.set_theme(style="whitegrid")
 plt.rcParams['figure.figsize'] = (10, 6)
 plt.rcParams['figure.dpi'] = 120
 
+st.set_page_config(
+    page_title="📊 Social Media Engagement Analytics",
+    page_icon="📈",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+st.markdown(
+    """
+    <style>
+    .block-container {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1200px;
+    }
+    .stImage > div {
+        display: flex;
+        justify-content: center;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # -------------------------------
 # CREATE OUTPUT FOLDER
 # -------------------------------
@@ -55,6 +82,8 @@ st.image(f"{OUTPUT_DIR}/graph1_likes_platform.png")
 # -------------------------------
 # GRAPH 2: Comments vs Shares
 # -------------------------------
+st.subheader("Comments vs Shares by Platform")
+
 fig2, ax2 = plt.subplots()
 sns.scatterplot(
     x='comments',
@@ -79,6 +108,8 @@ st.image(f"{OUTPUT_DIR}/graph2_comments_shares.png")
 # -------------------------------
 # GRAPH 3: Engagement Distribution
 # -------------------------------
+st.subheader("Overall Engagement Distribution")
+
 fig3, ax3 = plt.subplots()
 colors = ["#66c2a5", "#fc8d62", "#8da0cb"]
 
@@ -104,6 +135,8 @@ st.image(f"{OUTPUT_DIR}/graph3_engagement_pie.png")
 # -------------------------------
 # GRAPH 4: Posts Over Time
 # -------------------------------
+st.subheader("Posting Activity Over Time")
+
 fig4, ax4 = plt.subplots()
 posts_per_day = df.groupby(df['post_time'].dt.date).size()
 
@@ -122,6 +155,8 @@ st.image(f"{OUTPUT_DIR}/graph4_posts_time.png")
 # -------------------------------
 # GRAPH 5: Sentiment Distribution
 # -------------------------------
+st.subheader("Sentiment Distribution")
+
 fig5, ax5 = plt.subplots()
 sns.countplot(
     x='sentiment_score',
@@ -141,4 +176,5 @@ plt.close(fig5)
 
 st.image(f"{OUTPUT_DIR}/graph5_sentiment.png")
 
+st.success(f"✅ All styled graphs saved in '{OUTPUT_DIR}' folder!")
 print(f"✅ All styled graphs saved in '{OUTPUT_DIR}' folder!")
